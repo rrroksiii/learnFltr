@@ -3,62 +3,73 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LIMON DEMO',
-      theme: ThemeData(
-        primarySwatch: Colors.lime,
-      ),
-      home: MyHomePage(title: 'LIMON Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the jhkjgh this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+      title: 'Welcome to Flutter',
+      home:Scaffold(
+        body: SafeArea(
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            children: <Widget>[
+              SizedBox(height: 80.0),
+              Column(
+                children: <Widget>[
+                  Image.asset('assets/diamond.png'),
+                  SizedBox(height: 16.0),
+                  Text('SHRINE'),
+                ],
+              ),
+              SizedBox(height: 120.0),
+              // TODO: Wrap Username with AccentColorOverride (103)
+              // TODO: Remove filled: true values (103)
+              // TODO: Wrap Password with AccentColorOverride (103)
+              // TODO: Add TextField widgets (101)
+              // TODO: Add button bar (101)
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  filled: true,
+                  labelText: 'Username',
+                ),
+              ),
+// spacer
+              SizedBox(height: 12.0),
+// [Password]
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  filled: true,
+                  labelText: 'Password',
+                ),
+                obscureText: true,
+              ),
+              ButtonBar(
+                // TODO: Add a beveled rectangular border to CANCEL (103)
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('CANCEL'),
+                    onPressed: () {
+                      // TODO: Clear the text fields (101)
+                      _usernameController.clear();
+                      _passwordController.clear();
+                    },
+                  ),
+                  // TODO: Add an elevation to NEXT (103)
+                  // TODO: Add a beveled rectangular border to NEXT (103)
+                  RaisedButton(
+                    child: Text('NEXT'),
+                    onPressed: () {
+                      // TODO: Show the next page (101)
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
